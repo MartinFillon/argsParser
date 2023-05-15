@@ -8,11 +8,15 @@
 #ifndef MY_PARSER_H_
     #define MY_PARSER_H_
 
+    #include <stdbool.h>
+    #include <stddef.h>
+
     #include "my_str.h"
     #include "my_vec.h"
     #include "my_map.h"
-    #include <stdbool.h>
-#include <stddef.h>
+
+    #define INFINITY -1
+
 
 enum arg_type_e {
     ARG_INT,
@@ -23,11 +27,9 @@ enum arg_type_e {
     ARG_VOID
 };
 
-#define INFINITY -1
-
 typedef struct args_s {
     str_t *arg_name;
-    str_t *possible_names;
+    vec_str_t *possible_names;
     vec_int_t *possible_types;
     bool required;
     size_t max;
